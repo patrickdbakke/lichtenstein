@@ -1,0 +1,30 @@
+@import "../../../node_modules/mathsass/dist/math";
+
+@function shadow-three-d($outlineColor: black, $shadowColor: white,  $height: 10, $outlineWeight: 5, $theta: 60deg){
+  $shadow: '1px 1px ' + $outlineColor + ', -1px -1px ' + $outlineColor + ', 1px 0 ' + $outlineColor + ', -1px 0 ' + $outlineColor + ', 0 1px ' + $outlineColor + ', 0 -1px ' + $outlineColor + ',';
+  @for $i from 0 to $height {
+    $x: $i*cos($theta)*1px;
+    $y: $i*sin($theta)*1px;
+    $partial: $x $y $shadowColor;
+    $shadow: $shadow + $partial + ",";            
+  };
+  @for $i from 0 to $height {
+    @for $j from 0 to $outlineWeight {
+      $x:   ($i*cos($theta))*1px;
+      $x1:  ($i*cos($theta) - $j)*1px;
+      $x2:  ($i*cos($theta) + $j)*1px;
+      $y:   ($i*sin($theta))*1px;
+      $y1:  ($i*sin($theta) - $j)*1px;
+      $y2:  ($i*sin($theta) + $j)*1px;
+      $partial: $x $y $outlineColor, $x $y1 $outlineColor, $x1 $y $outlineColor, $x1 $y1 $outlineColor, $x2 $y $outlineColor, $x $y2 $outlineColor, $x2 $y2 $outlineColor, $x1 $y2 $outlineColor, $x2 $y1 $outlineColor,;
+      $shadow: $shadow + $partial;
+      @if $j < $outlineWeight - 1 {
+          $shadow: $shadow + ",";
+      }
+    }
+    @if $i < $height - 1 {
+        $shadow: $shadow + ",";
+    }
+  };
+  @return #{$shadow};
+}

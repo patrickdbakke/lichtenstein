@@ -1,0 +1,29 @@
+@import "../../node_modules/mathsass/dist/math";
+
+@import 'utils/functions/shadow';
+
+@import 'layout/body';
+@import 'layout/content';
+@import 'layout/menu';
+
+.title{
+  font-size:5em;
+  font-weight:bold;
+}
+.pop{
+  box-shadow: shadow-three-d();
+}
+.pop-text{
+  font-family: 'Slabo 27px', serif;
+  padding:2em;
+  display:inline-block;
+  color:white;
+  text-shadow: shadow-three-d();
+  &::selection,*::selection{
+    background:rgba(255, 0, 0, .99);
+  }
+}
+
+html.android .gradient-text {
+  // todo: fix android
+}
