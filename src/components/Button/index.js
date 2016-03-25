@@ -50,7 +50,11 @@ class Button extends React.Component {
     // const level = primary ? 'primary' : accent ? 'accent' : 'neutral';
     // const shape = flat ? 'flat' : raised ? 'raised' : floating ? 'floating' : 'flat';
 
-    const classes = ClassNames('button', className);
+    const classes = ClassNames([style.button], {
+      // [style[level]]: neutral,
+      // [style.mini]: mini,
+      // [style.inverse]: inverse
+    }, className);
 
     const props = {
       ...others,

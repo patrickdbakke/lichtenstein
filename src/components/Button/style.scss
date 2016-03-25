@@ -1,26 +1,20 @@
-@import '../../scss/utils/functions/shadow';
+@import '../../scss/base/functions';
+@import '../../scss/base/mixins';
+@import '../../scss/base/variables';
 
 .button{
-	height: 1em;
-	margin: .5em;
-	outline:none;
-	padding: .75em;
-	width: 7em;
-	box-sizing:content-box;
-	margin:.25em;
+	width: 10em;
+	min-height: 1em;
+	@include boxy();
+	@include boxy-margins();
+	@include shadowed();
 
-	background:white;
-	border:none;
-	box-shadow: shadow-three-d();
 	cursor:pointer;
-	display:inline-block;
+	
 	font-family: 'Slabo 27px', serif;
-	font-size: 1.5em;
 	transition:box-shadow .25s, margin .25s;
 
 	&:hover{
 		box-shadow: shadow-three-d(black, white, 10, 5, 120deg);
-		margin-left:.40em;
-		margin-right:.10em;
 	}
 }

@@ -1,0 +1,86 @@
+@import '../../scss/base/functions';
+@import '../../scss/base/mixins';
+@import '../../scss/base/variables';
+
+.root {
+  position: relative;
+  display:inline-block;
+  @include boxy-margins();
+  &:before{
+    position:absolute;
+    content:'';
+    bottom:0;
+    top:0;
+    left:0;
+    width:2.5em;
+    @include outlined();
+  }
+}
+@for $i from 1 to length($backgrounds){
+  .root.background-#{$i}{
+    &:before{
+      background: nth($backgrounds, $i);
+      background-size:7.5px 7.5px;
+    }
+  }
+}
+
+.input {
+  @include boxy();
+  @include outlined();
+  display: block;
+  width: 10em;
+  min-height: 1em;
+  padding-left:3em;
+  padding-right:3em;
+  
+  &:focus {
+    ~ .label:not(.fixed) {
+      
+    }
+    ~ .hint {
+      
+    }
+  }
+  &:focus, &.filled, &[type='date'], &[type='time'] {
+    
+  }
+}
+
+.arrow{
+  position:absolute;
+}
+
+.label {
+  position:absolute;
+  bottom:100%;
+  font-size:.75em;
+  margin-bottom: #{(.5/ 0.75) * 1em};
+  left: #{(3 / 0.75) * 1em};
+  color:#ccc;
+
+}
+
+.hint {
+  
+}
+
+.error, .counter {
+  
+}
+
+.counter {
+  
+}
+
+.disabled > .input {
+  
+}
+
+.errored {
+  
+}
+
+.hidden {
+  
+}
